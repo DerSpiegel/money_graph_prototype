@@ -61,6 +61,9 @@ d3.json("./data/miserables.json", function(error, graph) {
         .selectAll("circle")
         .data(graph.nodes)
         .enter().append("circle")
+        .attr("id", function(d){
+            return d.id;
+        })
         .attr("r", function(d){ return circleSize(d.group); })
         .attr("fill", "steelblue")
         .attr("stroke", function(d){
@@ -83,6 +86,19 @@ d3.json("./data/miserables.json", function(error, graph) {
 
     simulation.force("link")
         .links(graph.links);
+
+
+
+    var optArray = [];
+    for (var i = 0; i < graph.nodes.length - 1; i++) {
+        optArray.push(graph.nodes[i].id);
+    }
+    optArray = optArray.sort();
+    $(function () {
+        $("#search").autocomplete({
+            source: optArray
+        });
+    });
 
     function ticked() {
         link
@@ -112,4 +128,23 @@ function dragended(d) {
     if (!d3.event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
+}
+
+function searchNode() {
+//only working for node names without spaces
+    var selectedVal = document.getElementById('search').value;
+    var selectedNode = d3.select("#" + selectedVal);
+    var selectedNodeRadius = selectedNode.attr("r");
+
+    selectedNode
+        .transition()
+        .duration(500)
+        .attr("r", function(){
+            return selectedNodeRadius * 4;
+        })
+        .transition()
+        .duration(3000)
+        .attr("r", function(){
+            return selectedNodeRadius;
+        });
 }

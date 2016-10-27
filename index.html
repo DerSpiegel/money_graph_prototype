@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<svg width="600" height="500"></svg>
-<link rel="stylesheet" href="css/css.css" type="text/css" media="all">
-<script src="lib/d3.v4.min.js"></script>
-<!--using experimental version of d3-tip_node, since tit hasn't been portet to d3 v4 so far-->
-<!--https://github.com/VACLab/d3-tip_node-->
-<script src="lib/d3-tip.js"> </script>
-<script src="app.js"></script>
+<head>
+    <svg width="600" height="500"></svg>
+    <link rel="stylesheet" href="css/css.css" type="text/css" media="all">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" type="text/css" media="all">
+    <script src="lib/d3.v4.min.js"></script>
+    <!--using experimental version of d3-tip_node, since it hasn't been ported to d3.v4 so far-->
+    <!--https://github.com/VACLab/d3-tip_node-->
+    <script src="lib/d3-tip.js"> </script>
+    <script src="lib/jquery-1.11.0.min.js"> </script>
+    <script type='text/javascript' src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"> </script>
+
+    <script src="app.js"></script>
+</head>
+<body>
+<div class="ui-widget">
+    <input id="search">
+    <button type="button" onclick="searchNode()">Search</button>
+</body>
+
+
+
