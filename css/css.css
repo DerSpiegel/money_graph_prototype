@@ -1,0 +1,44 @@
+body,html{
+    font-family: Helvetica, Verdana, Calibri, Candara, Arial, sans-serif;
+    margin: 0;
+}
+
+.links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+}
+
+.nodes circle {
+    stroke-width: 1;
+}
+
+.tt_title {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.tt_bold {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.tt_normal {
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.d3-tip_node {
+    line-height: 1.25;
+    background: rgba(245,245,245,0.75);
+    padding: 5px 7px;
+    border-radius: 3px;
+    color: #333;
+}
+
+.d3-tip_edge {
+    line-height: 1.25;
+    background: rgba(20,20,20,0.75);
+    padding: 5px 7px;
+    border-radius: 3px;
+    color: #fff;
+}
