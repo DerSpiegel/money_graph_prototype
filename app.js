@@ -2,7 +2,7 @@ var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
 
-//var color = d3.scaleOrdinal(d3.schemeCategory20);
+var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -12,7 +12,7 @@ var simulation = d3.forceSimulation()
 //Set up tooltip for nodes
 var tip_node = d3.tip()
     .attr('class', 'd3-tip_node')
-    .offset([40, 70])
+    .offset([40, 80])
     .html(function (d) {
         return "" +
         "<div class=tt_title>" + d.id + "</div>" +
@@ -23,7 +23,7 @@ var tip_node = d3.tip()
 
 var tip_edge = d3.tip()
     .attr('class', 'd3-tip_edge')
-    .offset([40, 70])
+    .offset([40, 80])
     .html(function (d) {
         return "" +
             "<div class=tt_title>from: " + d.source.id + "</div>" +
@@ -65,7 +65,9 @@ d3.json("./data/miserables.json", function(error, graph) {
             return d.id;
         })
         .attr("r", function(d){ return circleSize(d.group); })
-        .attr("fill", "steelblue")
+        .style("fill", function (d) {
+            return color(d.group);
+        })
         .attr("stroke", function(d){
             if (d.group > 7) { return "#000"; }
             else { return "#fff"; }
