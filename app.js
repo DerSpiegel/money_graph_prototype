@@ -39,7 +39,7 @@ svg.call(tip_edge);
 
 // calculate circle size from number of edges
 circleSize = d3.scaleQuantize()
-    .range([4,5,6,8]);
+    .range([5,6,7,8]);
 
 
 d3.json("./data/miserables.json", function(error, graph) {
