@@ -62,9 +62,10 @@ d3.json("./data/miserables.json", function(error, graph) {
         .data(graph.nodes)
         .enter().append("circle")
         .attr("id", function(d){
-            return d.id;
+            // provisional approach to deal with special characters in id / CSS-selector
+            return d.id.replace(".","_").replace("@","_");
         })
-        .attr("r", function(d){ return circleSize(d.group); })
+        .attr("r", function(d){ return circleSize(d.freq); })
         .style("fill", function (d) {
             return color(d.group);
         })
@@ -135,8 +136,10 @@ function dragended(d) {
 function searchNode() {
 //only working for node names without spaces
     var selectedVal = document.getElementById('search').value;
-    var selectedNode = d3.select("#" + selectedVal);
+    var selectedNode = d3.select("#" + selectedVal.replace(".","_").replace("@","_"));
     var selectedNodeRadius = selectedNode.attr("r");
+
+    console.log(selectedVal)
 
     selectedNode
         .transition()
